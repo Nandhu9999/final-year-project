@@ -1,23 +1,23 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import LandingPage from "./pages/LandingPage"
+import Dashboard from "./pages/Dashboard"
+import Login from "./pages/Login"
+import NotFound from "./pages/NotFound"
 
-export default function App() {
+function App() {
 
-  const style = {
-    container:{
-      height:"100vh",
-      width:"100vw",
-      display:"flex",
-      justifyContent:"center",
-      alignItems:"center"
-    },
-  
-    para:{
-      fontSize:"20px"
-    }
-  }
+  const router = createBrowserRouter([
+    {path: "/", element: <LandingPage />},
+    {path: "/login", element: <Login />},
+    {path: "/c", element: <Dashboard />},
+    {path: "/c/:cid", element: <Dashboard />},
+    {path: "/check", element: <Dashboard />},
+    {path: "*", element: <NotFound />}
+  ]);
 
   return (
-    <div style={style.container}>
-      <p style={style.para}>helloooo</p>
-    </div>
+    <RouterProvider router={router} />
   )
 }
+
+export default App
